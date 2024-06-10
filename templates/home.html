@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center mb-4">Welcome to the Coinmarketcap-scraper</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-5">APIs</h2>
+            </div>
+        </div>
+    </div>
+
+<div class="tablediv">
+    <table>
+        <thead>
+            <tr>
+                <th>Path</th>
+                <th>Description</th>
+                <th>Methods</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for route in routes %}
+                <tr>
+                    <td><a href="{{ request.scheme }}://{{ request.get_host }}{{ route.path }}">{{ route.path }}</a></td>
+                    <td>{{ route.description }}</td>
+                    <td>{{ route.methods|join:", " }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+{% endblock %}
